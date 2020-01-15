@@ -1,0 +1,96 @@
+<odoo>
+  <data>
+    <!-- tree -->
+    <record model="ir.ui.view" id="vit_running_balance_tree">
+      <field name="name">vit_running_balance_tree</field>
+      <field name="model">vit_running_balance.trx</field>
+      <field name="type">tree</field>
+      <field name="priority" eval="8"/>
+      <field name="arch" type="xml">
+        <tree string="trx">
+          <field name="date"/>
+          <field name="name"/>
+          <field name="debit"/>
+          <field name="credit"/>
+          <field name="balance"/>
+        </tree>
+      </field>
+    </record>
+    <!-- form -->
+    <record model="ir.ui.view" id="vit_running_balance_form">
+      <field name="name">vit_running_balance_form</field>
+      <field name="model">vit_running_balance.trx</field>
+      <field name="type">form</field>
+      <field name="priority" eval="8"/>
+      <field name="arch" type="xml">
+        <form string="trx">
+          <group>
+            <field name="name"/>
+            <field name="date"/>
+            <field name="debit"/>
+            <field name="credit"/>
+          </group>
+        </form>
+      </field>
+    </record>
+    
+
+    <!-- actions opening views on models -->
+    <record model="ir.actions.act_window" id="act_open_vit_running_balance_view">
+      <field name="name">Trx</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">vit_running_balance.trx</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    <!-- act form -->
+    <!-- <record model="ir.actions.act_window_view" id="act_open_vit_running_balance_form">
+      <field name="act_window_id" ref="act_open_vit_running_balance_view"/>
+      <field name="sequence" eval="20"/>
+      <field name="view_mode">form</field>
+      <field name="view_id" ref="vit_running_balance_form"/>
+    </record> -->
+    <!--  act tree -->
+    <!-- <record model="ir.actions.act_window_view" id="act_open_vit_running_balance_tree">
+      <field name="act_window_id" ref="act_open_vit_running_balance_view"/>
+      <field name="sequence" eval="20"/>
+      <field name="view_mode">tree</field>
+      <field name="view_id" ref="vit_running_balance_tree"/>
+    </record> -->
+    <!-- menuitem -->
+    <menuitem id="vit_running_balance.trx"
+              name="Trx"
+              parent="sale.report_sales_team"
+              sequence="20"
+              action="act_open_vit_running_balance_view"/>
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="vit_running_balance.action_server">
+      <field name="name">vit_running_balance server</field>
+      <field name="model_id" ref="model_vit_running_balance_vit_running_balance"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="vit_running_balance" id="vit_running_balance.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="vit_running_balance.menu_1" parent="vit_running_balance.menu_root"/>
+    <menuitem name="Menu 2" id="vit_running_balance.menu_2" parent="vit_running_balance.menu_root"/>
+    -->
+    <!-- actions -->
+    
+    
+  </data>
+</odoo>
